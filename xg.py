@@ -13,7 +13,7 @@ with open("xgboost_model.pkl", "rb") as file:
     model = pickle.load(file)
 # Load the saved TfidfVectorizer
 with open("tfidf_vectorizer1.pkl", "rb") as file:
-    vectorizer = pickle.load(file)
+    vectorizer1 = pickle.load(file)
 # Streamlit app code
 st.title("Twitter Speech Analysis App")
 st.markdown("<span style='font-size: 20px;'><strong>By Sohel Ahmed</strong></span>", unsafe_allow_html=True)
@@ -25,7 +25,7 @@ user_input = st.text_area("")
 # Create a predict button
 if st.button("Predict"):
     # Preprocess the input text
-    text_vectorized = vectorizer.transform([user_input])
+    text_vectorized = vectorizer1.transform([user_input])
     # Make predictions
     prediction = model.predict(text_vectorized)[0]
     st.header("Prediction:")
